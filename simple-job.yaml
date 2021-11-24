@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: simple-job
+        image: <YOUR_CONTAINER_REGISTRY>/<IMAGE_NAME>:<TAG>
+        command:
+          - "python"
+          - "/train.py"
+          - "--hidden_units"
+          - "64"
+      restartPolicy: Never
+  backoffLimit: 4
+
