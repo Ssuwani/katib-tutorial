@@ -129,3 +129,28 @@ kubectl apply -f simple-katib.yaml
 
 
 
+### ETC
+
+**Katib의 다양한 Metrics Collector**
+
+- StdOutCollector (default)
+- FileCollector
+- TfEventCollector
+- PrometheusMetricCollector
+- CustomCollector
+
+**Katib의 다양한 HPO Algorithms**
+
+- Random Search
+- Grid Search
+- Bayesian Optimization
+- TPE
+- Multivariate TPE
+- CMA-ES
+- Sobol's Quasirandom Sequence
+- HyperBand
+
+
+
+
+
