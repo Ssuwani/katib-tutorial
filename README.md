@@ -11,11 +11,7 @@ Hyper Parameter Tuning을 위한 Katib 사용법입니다.
 
 ### Katib Install
 
-Release version을 다운받았습니다. https://github.com/kubeflow/katib 참고
-
-```bash
-kubectl apply -k "github.com/kubeflow/katib.git/manifests/v1beta1/installs/katib-standalone?ref=v0.11.1"
-```
+https://www.kubeflow.org/docs/components/katib/hyperparameter/
 
 
 
