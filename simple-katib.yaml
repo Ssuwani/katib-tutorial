@@ -1,0 +1,42 @@
+apiVersion: kubeflow.org/v1beta1
+kind: Experiment
+metadata:
+  namespace: kubeflow
+  name: simple-mnist
+spec:
+  objective:
+    type: maximize
+    goal: 0.99
+    objectiveMetricName: test-acc
+    additionalMetricNames:
+      - test-loss
+  algorithm:
+    algorithmName: random
+  parallelTrialCount: 3
+  maxTrialCount: 12
+  maxFailedTrialCount: 3
+  parameters:
+    - name: hidden_units
+      parameterType: int
+      feasibleSpace:
+        min: "32"
+        max: "256"
+  trialTemplate:
+    primaryContainerName: training-container
+    trialParameters:
+      - name: hidden_units
+        description: hidden layer unints
+        reference: hidden_units
+    trialSpec:
+      apiVersion: batch/v1
+      kind: Job
+      spec:
+        template:
+          spec:
+            containers:
+              - name: training-container
+                image: ssuwani/katib-mnist:v0.5
+                commands:
+                  - "python /train.py"
+                  - "--hidden_units=${trialParameters.hidden_units}"
+            restartPolicy: Never
