@@ -56,6 +56,12 @@ kubectl apply -f simple-katib.yaml
 
 
 
+### How it works
+
+`simple-katib.yaml` 에 메트릭 수집에 대한 언급없이 test-acc, test-loss 값이 수집되는 것은 Katib Metrics Collection의 default가 StdOut이기 때문입니다. `print` 를 통해 출력되는 값들을 자동으로 수집하여 결과로 보여줍니다. `train.py` 를 보면 `print(f"model test-loss={loss:.4f} test-acc={acc:.4f}")` 다음과 같이 수집이 가능하도록 출력형태를 맞춘것을 확인할 수 있습니다.
+
+
+
 ### Manual
 
 **1. make your docker image**
