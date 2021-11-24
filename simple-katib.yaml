@@ -35,8 +35,9 @@ spec:
           spec:
             containers:
               - name: training-container
-                image: ssuwani/katib-mnist:v0.5
-                commands:
-                  - "python /train.py"
+                image: ssuwani/katib-mnist:v0.8
+                command:
+                  - "python"
+                  - "/train.py"
                   - "--hidden_units=${trialParameters.hidden_units}"
             restartPolicy: Never
